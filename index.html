@@ -1,67 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Experimental Essay</title>
   <style>
     body {
-      font-family: Georgia, serif;
-      padding: 2rem;
-      max-width: 601px;
-      margin: auto;
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
-    .paragraph {
-      display: none;
+
+    .orbit-wrapper {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      animation: spin 10s linear infinite;
     }
-    .paragraph.active {
-      display: block;
+
+    .orbit-text {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      white-space: nowrap;
     }
-    .options {
-      margin-top: 1rem;
-    }
-    button {
-      margin: 0.5rem 0;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
 <body>
-
-  <div id="p1" class="paragraph active">
-    <p>This is the beginning of your journey. The air feels electric with possibility.</p>
-    <div class="options">
-      <button onclick="goTo('p2')">Step into the unknown</button>
-      <button onclick="goTo('p3')">Stay and reflect</button>
-    </div>
+  <div class="orbit-wrapper">
+    <div class="orbit-text">Spinning around the center!</div>
   </div>
-
-  <div id="p2" class="paragraph">
-    <p>You step forward into the fog, unsure of what you’ll find. The path bends sharply.</p>
-    <div class="options">
-      <button onclick="goTo('p4')">Follow the bend</button>
-    </div>
-  </div>
-
-  <div id="p3" class="paragraph">
-    <p>You sit down to think. Time stretches. A thought occurs: what if you never moved again?</p>
-    <div class="options">
-      <button onclick="goTo('p4')">Stand up and go after all</button>
-    </div>
-  </div>
-
-  <div id="p4" class="paragraph">
-    <p>The trees open up to reveal a hidden glade — a place that wasn’t on any map.</p>
-    <div class="options">
-      <button onclick="goTo('p1')">Start over</button>
-    </div>
-  </div>
-
-  <script>
-    function goTo(id) {
-      document.querySelectorAll('.paragraph').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-  </script>
-
 </body>
 </html>
