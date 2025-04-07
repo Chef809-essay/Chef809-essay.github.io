@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinning Text</title>
   <style>
     body {
       margin: 0;
@@ -10,6 +13,7 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      flex-direction: column;
     }
 
     .orbit-wrapper {
@@ -37,11 +41,52 @@
         transform: rotate(360deg);
       }
     }
+
+    /* Center button style */
+    #pause-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #f0f0f0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #pause-btn:hover {
+      background-color: #ccc;
+    }
   </style>
 </head>
 <body>
+
   <div class="orbit-wrapper">
-    <div class="orbit-text">this is a test</div>
+    <div class="orbit-text">I spin and always face the center!</div>
   </div>
+  
+  <button id="pause-btn">Pause</button>
+
+  <script>
+    // Select the button and the orbit wrapper
+    const button = document.getElementById("pause-btn");
+    const orbitWrapper = document.querySelector(".orbit-wrapper");
+
+    // Toggle animation play/pause
+    let isPaused = false;
+    
+    button.addEventListener("click", function() {
+      if (isPaused) {
+        orbitWrapper.style.animationPlayState = "running";
+        button.textContent = "Pause";
+      } else {
+        orbitWrapper.style.animationPlayState = "paused";
+        button.textContent = "Resume";
+      }
+      isPaused = !isPaused;
+    });
+  </script>
 </body>
 </html>
