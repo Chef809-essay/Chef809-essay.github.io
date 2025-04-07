@@ -23,15 +23,15 @@
       animation: spin 60s linear infinite;
     }
 
-    .orbit-text {
+   .orbit-text {
       position: absolute;
       top: 50%;
-      left: 0;
-      transform-origin: 150px center; /* Half the wrapper size */
-      transform: rotate(0deg) translateX(150px) rotate(180deg);
+      left: 50%;
+      transform-origin: center center; /* Rotate around the center of the text */
+      transform: rotate(0deg) translateY(-150px) rotate(0deg); /* Move the text away and rotate it */
       color: #fff;
       white-space: nowrap;
-    }
+}
 
     @keyframes spin {
       0% {
