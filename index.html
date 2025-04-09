@@ -118,22 +118,28 @@
 
   <script>
     // Select the button and the orbit wrapper
-    const button = document.getElementById("pause-btn");
-    const orbitWrapper = document.querySelector(".orbit-wrapper");
+const button = document.getElementById("pause-btn");
+const orbitTexts = document.querySelectorAll(".orbit-text");
 
-    // Toggle animation play/pause
-    let isPaused = false;
-    
-    button.addEventListener("click", function() {
-      if (isPaused) {
-        orbitWrapper.style.animationPlayState = "running";
-        button.textContent = "Pause";
-      } else {
-        orbitWrapper.style.animationPlayState = "paused";
-        button.textContent = "Resume";
-      }
-      isPaused = !isPaused;
+// Toggle animation play/pause
+let isPaused = false;
+
+button.addEventListener("click", function() {
+  if (isPaused) {
+    // Resume all the animations
+    orbitTexts.forEach(function(text) {
+      text.style.animationPlayState = "running";
     });
+    button.textContent = "Pause";
+  } else {
+    // Pause all the animations
+    orbitTexts.forEach(function(text) {
+      text.style.animationPlayState = "paused";
+    });
+    button.textContent = "Resume";
+  }
+  isPaused = !isPaused;
+});
   </script>
 </body>
 </html>
