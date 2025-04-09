@@ -24,6 +24,13 @@
       height: 300px;
       animation: spin 20s linear infinite;
     }
+    
+.orbit-text {
+  position: absolute;  /* Ensure the text is positioned inside the orbit-wrapper */
+  transform-origin: center center;  /* Rotate around the center of the text */
+  color: black;  /* Change text color to black */
+  white-space: nowrap;  /* Prevent text from wrapping */
+}
 
   /* Positioning the 1st text (starting at 0deg) */
 .orbit-text:nth-child(1) {
