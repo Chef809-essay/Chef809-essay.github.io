@@ -18,13 +18,13 @@
       color: black; /* Change text color to black */
     }
 
-    .orbit-wrapper {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      animation: spin 20s linear infinite;
-    }
-    
+   .orbit-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  /* No spinning animation on the wrapper */
+}
+
 .orbit-text {
   position: absolute;  /* Ensure the text is positioned inside the orbit-wrapper */
   transform-origin: center center;  /* Rotate around the center of the text */
@@ -32,34 +32,59 @@
   white-space: nowrap;  /* Prevent text from wrapping */
 }
 
-  /* Positioning the 1st text (starting at 0deg) */
+/* Keyframes for each text */
+@keyframes spinText1 {
+  0% {
+    transform: rotate(0deg) translateY(-150px) rotate(0deg); /* Start at 12 o'clock */
+  }
+  100% {
+    transform: rotate(360deg) translateY(-150px) rotate(0deg); /* Rotate around the center */
+  }
+}
+
+@keyframes spinText2 {
+  0% {
+    transform: rotate(90deg) translateX(150px) rotate(0deg); /* Start at 3 o'clock */
+  }
+  100% {
+    transform: rotate(450deg) translateX(150px) rotate(0deg); /* Rotate around the center */
+  }
+}
+
+@keyframes spinText3 {
+  0% {
+    transform: rotate(180deg) translateY(150px) rotate(0deg); /* Start at 6 o'clock */
+  }
+  100% {
+    transform: rotate(540deg) translateY(150px) rotate(0deg); /* Rotate around the center */
+  }
+}
+
+@keyframes spinText4 {
+  0% {
+    transform: rotate(270deg) translateX(-150px) rotate(0deg); /* Start at 9 o'clock */
+  }
+  100% {
+    transform: rotate(630deg) translateX(-150px) rotate(0deg); /* Rotate around the center */
+  }
+}
+
+/* Apply the animations to each text */
 .orbit-text:nth-child(1) {
-  transform: rotate(0deg) translateY(-150px); /* Rotate and move text upward */
+  animation: spinText1 20s linear infinite;
 }
 
-/* Positioning the 2nd text (starting at 90deg) */
 .orbit-text:nth-child(2) {
-  transform: rotate(90deg) translateY(-150px); /* Rotate and move text to the right */
+  animation: spinText2 20s linear infinite;
 }
 
-/* Positioning the 3rd text (starting at 180deg) */
 .orbit-text:nth-child(3) {
-  transform: rotate(180deg) translateY(-150px); /* Rotate and move text downward */
+  animation: spinText3 20s linear infinite;
 }
 
-/* Positioning the 4th text (starting at 270deg) */
 .orbit-text:nth-child(4) {
-  transform: rotate(270deg) translateY(-150px); /* Rotate and move text to the left */
+  animation: spinText4 20s linear infinite;
 }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(-360deg);
-      }
-    }
 
     /* Center button style */
     #pause-btn {
