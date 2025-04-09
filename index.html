@@ -23,7 +23,16 @@
       animation: spin 20s linear infinite;
     }
 
-   .orbit-text {
+   .orbit-text:nth-child(1) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center center; /* Rotate around the center of the text */
+      transform: rotate(0deg) translateY(-150px) rotate(0deg); /* Move the text away and rotate it */
+      color: #fff;
+      white-space: nowrap;
+
+      .orbit-text:nth-child(2) {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -64,7 +73,8 @@
 <body>
 
   <div class="orbit-wrapper">
-    <div class="orbit-text">I spin and always face the center!</div>
+    <div class="orbit-text">Text 1</div>
+    <div class="orbit-text">Text 2</div>
   </div>
   
   <button id="pause-btn">Pause</button>
