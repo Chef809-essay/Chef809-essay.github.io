@@ -25,42 +25,24 @@
       animation: spin 20s linear infinite;
     }
 
-   .orbit-text:nth-child(1) {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform-origin: center center; /* Rotate around the center of the text */
-      transform: rotate(0deg) translateY(-150px) /* Move the text away and rotate it */
-      color: #fff;
-      white-space: nowrap;
-   }
+  /* Positioning the 1st text (starting at 0deg) */
+.orbit-text:nth-child(1) {
+  transform: rotate(0deg) translateY(-150px); /* Rotate and move text upward */
+}
 
-      .orbit-text:nth-child(2) {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform-origin: center center; /* Rotate around the center of the text */
-      transform: rotate(90deg) translatex(-150px); /* Move the text away and rotate it */
-      color: #fff;
-      white-space: nowrap;
+/* Positioning the 2nd text (starting at 90deg) */
+.orbit-text:nth-child(2) {
+  transform: rotate(90deg) translateX(150px); /* Rotate and move text to the right */
 }
-     .orbit-text:nth-child(3) {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform-origin: center center; /* Rotate around the center of the text */
-      transform: rotate(180deg) translateY(-150px); /* Move the text away and rotate it */
-      color: #fff;
-      white-space: nowrap;
+
+/* Positioning the 3rd text (starting at 180deg) */
+.orbit-text:nth-child(3) {
+  transform: rotate(180deg) translateY(-150px); /* Rotate and move text downward */
 }
-     .orbit-text:nth-child(4) {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform-origin: center center; /* Rotate around the center of the text */
-      transform: rotate(270deg) translateX(150px);  /* Move the text away and rotate it */
-      color: #fff;
-      white-space: nowrap;
+
+/* Positioning the 4th text (starting at 270deg) */
+.orbit-text:nth-child(4) {
+  transform: rotate(270deg) translateX(150px); /* Rotate and move text to the left */
 }
 
     @keyframes spin {
