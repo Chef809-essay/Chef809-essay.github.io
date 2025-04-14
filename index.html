@@ -1,139 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spinning Text</title>
-  <style>
-    body {
-      font-family: 'Garamond', serif;
-      margin: 0;
-      height: 100vh;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      flex-direction: column;
-      color: black; /* Change text color to black */
-    }
-
-    /* The container for your image */
-    .orbit-wrapper {
-      position: relative;
-      width: 900px; /* Size of the wrapper (can adjust this to fit the image) */
-      height: 900px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-    
-   .orbit-image1, .orbit-image2, .orbit-image3, .orbit-image4 {
-      position: absolute;
-      transform-origin: center center; /* Ensures the rotation is around the center */
-      animation: spinImage linear infinite;
-    }
-
-    .orbit-image1 {
-      width: 900px;
-      height: 900px;
-      animation-duration: 20s;
-    }
-
-    .orbit-image2 {
-      width: 800px;
-      height: 800px;
-      animation-duration: 22s;
-    }
-
-    .orbit-image3 {
-      width: 700px;
-      height: 700px;
-      animation-duration: 24s;
-    }
-
-    .orbit-image4 {
-      width: 600px;
-      height: 600px;
-      animation-duration: 26s;
-    }
-
-@keyframes spinImage {
-  0% {
-    transform: rotate(0deg); 
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Garamond, serif;
   }
-  100% {
-    transform: rotate(360deg);
+
+  .orbit-wrapper {
+    position: relative;
+    width: 900px;
+    height: 900px;
   }
-}
-  
 
-    /* Center button style */
-    #pause-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #f0f0f0;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+  .orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spinImage linear infinite;
+    transform-origin: center center;
+  }
 
-    #pause-btn:hover {
-      background-color: #ccc;
-    }
-  </style>
-</head>
-<body>
+  .orbit-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 
-  <div class="orbit-wrapper">
-    <!-- Make the SVG image a clickable link -->
+  .orbit1 { width: 900px; height: 900px; animation-duration: 20s; }
+  .orbit2 { width: 800px; height: 800px; animation-duration: 22s; }
+  .orbit3 { width: 700px; height: 700px; animation-duration: 24s; }
+  .orbit4 { width: 600px; height: 600px; animation-duration: 26s; }
+
+  @keyframes spinImage {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  #pause-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  #pause-btn:hover {
+    background-color: #ccc;
+  }
+</style>
+
+<div class="orbit-wrapper">
+  <div class="orbit orbit1">
     <a href="https://www.youtube.com/watch?v=SvgDht4UGFs" target="_blank">
-      <img src="image1.svg" class="orbit-image1" alt="Spinning Image">
-    </a>
-    <a href="https://www.google.com/" target="_blank">
-      <img src="Image2.svg" class="orbit-image2" alt="Spinning Image">
-    </a>
-    <a href="https://www.google.com/" target="_blank">
-      <img src="Image3.svg" class="orbit-image3" alt="Spinning Image">
-    </a>
-    <a href="https://www.google.com/" target="_blank">
-      <img src="Image4.svg" class="orbit-image4" alt="Spinning Image">
+      <img src="image1.svg" class="orbit-image" />
     </a>
   </div>
-  
-  
-  
-  <button id="pause-btn">Pause</button>
+  <div class="orbit orbit2">
+    <a href="https://www.google.com/" target="_blank">
+      <img src="Image2.svg" class="orbit-image" />
+    </a>
+  </div>
+  <div class="orbit orbit3">
+    <a href="https://www.google.com/" target="_blank">
+      <img src="Image3.svg" class="orbit-image" />
+    </a>
+  </div>
+  <div class="orbit orbit4">
+    <a href="https://www.google.com/" target="_blank">
+      <img src="Image4.svg" class="orbit-image" />
+    </a>
+  </div>
+</div>
 
-  <script>
-  // Select the button and the orbit wrapper
-    const button = document.getElementById("pause-btn");
-    const orbitTexts = document.querySelectorAll(".orbit-image1, .orbit-image2,.orbit-image3, .orbit-image4");
+<button id="pause-btn">Pause</button>
 
-    // Toggle animation play/pause
-    let isPaused = false;
+<script>
+  const button = document.getElementById("pause-btn");
+  const orbitDivs = document.querySelectorAll(".orbit");
 
-    button.addEventListener("click", function() {
-      if (isPaused) {
-        // Resume all the animations
-        orbitTexts.forEach(function(text) {
-          text.style.animationPlayState = "running";  // Set the animation to running
-        });
-        button.textContent = "Pause";
-      } else {
-        // Pause all the animations
-        orbitTexts.forEach(function(text) {
-          text.style.animationPlayState = "paused";  // Set the animation to paused
-        });
-        button.textContent = "Resume";
-      }
-      isPaused = !isPaused;
+  let isPaused = false;
+
+  button.addEventListener("click", function () {
+    orbitDivs.forEach(div => {
+      div.style.animationPlayState = isPaused ? "running" : "paused";
     });
-  </script>
-</body>
-</html>
+    button.textContent = isPaused ? "Pause" : "Resume";
+    isPaused = !isPaused;
+  });
+</script>
