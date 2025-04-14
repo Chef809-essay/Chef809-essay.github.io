@@ -104,6 +104,13 @@
   height: 1000px;
   animation: spinImage 20s linear infinite;
 }
+     .orbit-image1 {
+  position: absolute;
+  transform-origin: center center;
+  width: 900px; /* adjust to your liking */
+  height: 900px;
+  animation: spinImage 20s linear infinite;
+}
 
 @keyframes spinImage {
   0% {
@@ -143,6 +150,10 @@
     <div class="orbit-text">Text 4</div>
     <div class="orbit-text static-text">Static Text</div> <!-- Static Text -->
     <img src="lorem text rotate.svg" class="orbit-image" alt="Spinning Image">
+    <img src="image1.svg" class="orbit-image1" alt="Spinning Image">
+    <img src="Image2.svg" class="orbit-image2" alt="Spinning Image">
+    <img src="Image3.svg" class="orbit-image3" alt="Spinning Image">
+    <img src="Image4.svg" class="orbit-image4" alt="Spinning Image">
   </div>
   
   <button id="pause-btn">Pause</button>
@@ -150,7 +161,7 @@
   <script>
   // Select the button and the orbit wrapper
     const button = document.getElementById("pause-btn");
-    const orbitTexts = document.querySelectorAll(".orbit-text, .orbit-image");
+    const orbitTexts = document.querySelectorAll(".orbit-text, .orbit-image, .orbit-image1, .orbit-image2,.orbit-image3, .orbit-image4");
 
     // Toggle animation play/pause
     let isPaused = false;
