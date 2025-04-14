@@ -29,41 +29,45 @@
       overflow: hidden;
     }
     
-     .orbit-image1 {
-  position: absolute;
-  transform-origin: center center;
-  width: 900px; /* adjust to your liking */
-  height: 900px;
-  animation: spinImage 20s linear infinite;
-}
-     .orbit-image2 {
-  position: absolute;
-  transform-origin: center center;
-  width: 800px; /* adjust to your liking */
-  height: 800px;
-  animation: spinImage 22s linear infinite;
-}
-     .orbit-image3 {
-  position: absolute;
-  transform-origin: center center;
-  width: 700px; /* adjust to your liking */
-  height: 700px;
-  animation: spinImage 24s linear infinite;
-}
-     .orbit-image4 {
-  position: absolute;
-  transform-origin: center center;
-  width: 600px; /* adjust to your liking */
-  height: 600px;
-  animation: spinImage 26s linear infinite;
-}
+   .orbit-image1, .orbit-image2, .orbit-image3, .orbit-image4 {
+      position: absolute;
+      transform-origin: center center; /* Ensures the rotation is around the center */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Ensures the image is centered in the wrapper */
+      animation: spinImage linear infinite;
+    }
+
+    .orbit-image1 {
+      width: 900px;
+      height: 900px;
+      animation-duration: 20s;
+    }
+
+    .orbit-image2 {
+      width: 800px;
+      height: 800px;
+      animation-duration: 22s;
+    }
+
+    .orbit-image3 {
+      width: 700px;
+      height: 700px;
+      animation-duration: 24s;
+    }
+
+    .orbit-image4 {
+      width: 600px;
+      height: 600px;
+      animation-duration: 26s;
+    }
 
 @keyframes spinImage {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(0deg); translate(-50%, -50%);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(360deg); translate(-50%, -50%);
   }
 }
   
