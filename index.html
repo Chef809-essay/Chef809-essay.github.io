@@ -10,36 +10,64 @@
     font-family: Garamond, serif;
   }
 
-  .orbit-wrapper {
+ .orbit-wrapper {
+    width: 400px;           /* Adjust size as needed */
+    height: 400px;
     position: relative;
-    width: 900px;
-    height: 900px;
-  }
+    border-radius: 50%;     /* Make container a circle */
+    overflow: hidden;        /* Hide content outside circle */
+    margin: 20px auto;
+}
 
-  .orbit {
+.orbit {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: spinImage linear infinite;
-    transform-origin: center center;
-  }
-
-  .orbit-image {
-    display: block;
     width: 100%;
     height: 100%;
-  }
+    border: 2px solid black; /* Style your rings */
+    border-radius: 50%;
+    box-sizing: border-box; /* Include border in size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    animation: spin 20s linear infinite; /* Animation */
+}
 
-  .orbit1 { width: 900px; height: 900px; animation-duration: 30s; }
-  .orbit2 { width: 800px; height: 800px; animation-duration: 25s; }
-  .orbit3 { width: 700px; height: 700px; animation-duration: 20s; }
-  .orbit4 { width: 600px; height: 600px; animation-duration: 15s; }
+.orbit1 {
+    width: 100%;          /* Largest */
+    height: 100%;
+    animation-duration: 30s;
+}
 
-  @keyframes spinImage {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-  }
+.orbit2 {
+    width: 80%;           /* Smaller */
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    animation-duration: 25s;
+}
+
+.orbit3 {
+    width: 60%;           /* Even Smaller */
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    animation-duration: 20s;
+}
+
+.orbit-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit;         /* Inherit color from parent */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
   #pause-btn {
     position: absolute;
