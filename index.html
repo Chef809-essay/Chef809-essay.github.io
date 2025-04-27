@@ -1,208 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spinning Text</title>
-  <style>
-    body {
-      font-family: 'Garamond', serif;
-      margin: 0;
-      height: 100vh;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      flex-direction: column;
-      color: black; /* Change text color to black */
-    }
-
-   .orbit-wrapper {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  /* No spinning animation on the wrapper */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.orbit-text {
-  position: absolute;  /* Ensure the text is positioned inside the orbit-wrapper */
-  transform-origin: center center;  /* Rotate around the center of the text */
-  color: black;  /* Change text color to black */
-  white-space: nowrap;  /* Prevent text from wrapping */
-}
-
-/* Keyframes for each text */
-@keyframes spinText1 {
-  0% {
-    transform: rotate(0deg) translateY(-150px) rotate(0deg); /* Start at 12 o'clock */
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Garamond, serif;
   }
-  100% {
-    transform: rotate(360deg) translateY(-150px) rotate(0deg); /* Rotate around the center */
+
+  .orbit-wrapper {
+    position: relative;
+    width: 900px;
+    height: 900px;
   }
-}
 
-@keyframes spinText2 {
-  0% {
-    transform: rotate(90deg) translateY(-150px) rotate(0deg); /* Start at 3 o'clock, face inward */
+  .orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spinImage linear infinite;
+    transform-origin: center center;
   }
-  100% {
-    transform: rotate(450deg) translateY(-150px) rotate(0deg); /* Continue rotating around the center, always facing inward */
+
+  .orbit-image {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
-}
 
-@keyframes spinText3 {
-  0% {
-    transform: rotate(180deg) translateY(-150px) rotate(0deg); /* Start at 6 o'clock */
+  .orbit1 { width: 900px; height: 900px; animation-duration: 30s; }
+  .orbit2 { width: 800px; height: 800px; animation-duration: 25s; }
+  .orbit3 { width: 700px; height: 700px; animation-duration: 20s; }
+  .orbit4 { width: 600px; height: 600px; animation-duration: 15s; }
+
+  @keyframes spinImage {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
   }
-  100% {
-    transform: rotate(540deg) translateY(-150px) rotate(0deg); /* Rotate around the center */
+
+  #pause-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
   }
-}
 
-@keyframes spinText4 {
-  0% {
-    transform: rotate(270deg) translateY(-150px) rotate(0deg); /* Start at 9 o'clock */
+  #pause-btn:hover {
+    background-color: #ccc;
   }
-  100% {
-    transform: rotate(630deg) translateY(-150px) rotate(0deg); /* Rotate around the center */
-  }
-}
+</style>
 
-/* Apply the animations to each text */
-.orbit-text:nth-child(1) {
-  animation: spinText1 20s linear infinite;
-}
-
-.orbit-text:nth-child(2) {
-  animation: spinText2 20s linear infinite;
-}
-
-.orbit-text:nth-child(3) {
-  animation: spinText3 20s linear infinite;
-}
-
-.orbit-text:nth-child(4) {
-  animation: spinText4 20s linear infinite;
-}
-    
-/* Static Text (no animation, stays still) */
-.static-text {
-  position: absolute;  /* Make sure it's absolutely positioned inside the orbit wrapper */
-  transform: rotate(180deg) translateY(-150px); /* Position this where you'd like */
-  color: red; /* Optional: change text color to make it easier to see */
-  z-index: 10; /* Ensure this text is above other rotating text */
-}
-
-    .orbit-image {
-  position: absolute;
-  transform-origin: center center;
-  width: 1000px; /* adjust to your liking */
-  height: 1000px;
-  animation: spinImage 20s linear infinite;
-}
-     .orbit-image1 {
-  position: absolute;
-  transform-origin: center center;
-  width: 900px; /* adjust to your liking */
-  height: 900px;
-  animation: spinImage 20s linear infinite;
-}
-     .orbit-image2 {
-  position: absolute;
-  transform-origin: center center;
-  width: 800px; /* adjust to your liking */
-  height: 800px;
-  animation: spinImage 22s linear infinite;
-}
-     .orbit-image3 {
-  position: absolute;
-  transform-origin: center center;
-  width: 700px; /* adjust to your liking */
-  height: 700px;
-  animation: spinImage 24s linear infinite;
-}
-     .orbit-image4 {
-  position: absolute;
-  transform-origin: center center;
-  width: 600px; /* adjust to your liking */
-  height: 600px;
-  animation: spinImage 26s linear infinite;
-}
-
-@keyframes spinImage {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-  
-
-    /* Center button style */
-    #pause-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #f0f0f0;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #pause-btn:hover {
-      background-color: #ccc;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="orbit-wrapper">
-    <div class="orbit-text">Text 1</div>
-    <div class="orbit-text">Text 2</div>
-    <div class="orbit-text">Text 3</div>
-    <div class="orbit-text">Text 4</div>
-    <div class="orbit-text static-text">Static Text</div> <!-- Static Text -->
-    <img src="lorem text rotate.svg" class="orbit-image" alt="Spinning Image">
-    <img src="image1.svg" class="orbit-image1" alt="Spinning Image">
-    <img src="Image2.svg" class="orbit-image2" alt="Spinning Image">
-    <img src="Image3.svg" class="orbit-image3" alt="Spinning Image">
-    <img src="Image4.svg" class="orbit-image4" alt="Spinning Image">
+<div class="orbit-wrapper">
+  <div class="orbit orbit1">
+    <a href="https://www.youtube.com/watch?v=SvgDht4UGFs" target="_blank">
+      <img src="image1.svg" class="orbit-image" />
+    </a>
   </div>
-  
-  <button id="pause-btn">Pause</button>
+  <div class="orbit orbit2">
+    <a href="https://www.google.com/" target="_blank">
+      <img src="Image2.svg" class="orbit-image" />
+    </a>
+  </div>
+  <div class="orbit orbit3">
+    <a href="https://www.wikipedia.org/" target="_blank">
+      <img src="Image3.svg" class="orbit-image" />
+    </a>
+  </div>
+  <div class="orbit orbit4">
+    <a href="https://www.nachrichtenleicht.de/" target="_blank">
+      <img src="Image4.svg" class="orbit-image" />
+    </a>
+  </div>
+</div>
 
-  <script>
-  // Select the button and the orbit wrapper
-    const button = document.getElementById("pause-btn");
-    const orbitTexts = document.querySelectorAll(".orbit-text, .orbit-image, .orbit-image1, .orbit-image2,.orbit-image3, .orbit-image4");
+<button id="pause-btn">Pause</button>
 
-    // Toggle animation play/pause
-    let isPaused = false;
+<script>
+  const button = document.getElementById("pause-btn");
+  const orbitDivs = document.querySelectorAll(".orbit");
 
-    button.addEventListener("click", function() {
-      if (isPaused) {
-        // Resume all the animations
-        orbitTexts.forEach(function(text) {
-          text.style.animationPlayState = "running";  // Set the animation to running
-        });
-        button.textContent = "Pause";
-      } else {
-        // Pause all the animations
-        orbitTexts.forEach(function(text) {
-          text.style.animationPlayState = "paused";  // Set the animation to paused
-        });
-        button.textContent = "Resume";
-      }
-      isPaused = !isPaused;
+  let isPaused = false;
+
+  button.addEventListener("click", function () {
+    orbitDivs.forEach(div => {
+      div.style.animationPlayState = isPaused ? "running" : "paused";
     });
-  </script>
-</body>
-</html>
+    button.textContent = isPaused ? "Pause" : "Resume";
+    isPaused = !isPaused;
+  });
+</script>
